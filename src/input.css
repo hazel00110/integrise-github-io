@@ -1,5 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
 @theme {
     --font-inter: Inter, sans-serif;
-}
+    --font-roboto: Roboto, sans-serif;
+    /* --color-integrise: #00bf63; */
+    --color-integrise-50: #eefff6;
+    --color-integrise-100: #d7ffeb;
+    --color-integrise-200: #b2ffd9;
+    --color-integrise-300: #76ffbb;
+    --color-integrise-400: #33f597;
+    --color-integrise-500: #09de77;
+    --color-integrise-600: #00bf63;
+    --color-integrise-700: #04914e;
+    --color-integrise-800: #0a7140;
+    --color-integrise-900: #0a5d37;
+    --color-integrise-950: #00341d;
+
+
+};
 .hero-bg { background-image: radial-gradient(circle at 20% 20%, rgba(38,110,60,0.3), transparent 40%), radial-gradient(circle at 80% 30%, rgba(38,110,60,0.12), transparent 40%), linear-gradient(180deg, #0f172a 0%, #111827 100%); }

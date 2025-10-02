@@ -11,16 +11,16 @@
   <title>Integrise</title>
 </head>
 
-<body class="font-inter">
+<body>
   <nav
       x-data="nav()" x-init="init()" @scroll.window.passive="onScroll"
-        class="fixed top-0 left-0 right-0 z-[10000] transition duration-500 ease-in-out"
+        class="fixed top-0 left-0 right-0 z-[10000] transition duration-500 ease-in-out font-inter"
         :class="{
-         'shadow-lg bg-white text-gray-800': atTop,
-         'bg-transparent text-gray-100': !atTop,
+         'shadow-lg bg-white text-indigo-800': atTop,
+         'bg-transparent text-white': !atTop,
          'transition -translate-y-20': !open
        }">
-    <div class="container mx-auto p-4 flex flex-wrap items-center justify-between font-semibold text-lg">
+    <div class="container mx-auto p-4 flex flex-wrap items-center justify-between font-semibold">
       <!-- Logo -->
       <a href="#">
         <img :src="atTop ? './assets/img/integriseHt.svg' : './assets/img/integrisePt.svg'"
@@ -42,21 +42,21 @@
 
   <main>
     <!-- Section 1 (Hero) -->
-    <section class="h-screen hero-bg bg-cover bg-fixed bg-no-repeat text-gray-100 text-xl">
+    <section class="h-screen hero-bg bg-cover bg-fixed bg-no-repeat text-white text-xl">
       <div class="h-full container flex items-center mx-auto">
         <div class="px-4 mt-16 mb-16 max-w-7xl sm:mt-24">
           <div id="end-of-hero" class="h-px w-full"></div>
-          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl/snug font-title">
+          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-title">
             <span class="block">Ini Judul</span>
-            <span class="block">Gatau apa ini gaes</span>
+            <span class="block pt-2">Gatau apa ini gaes</span>
           </h1>
-          <p class="max-w-md mt-6 font-semibold sm:text-lg md:mt-12 md:text-xl/loose md:max-w-3xl">
+          <p class="max-w-md mt-3 font-bold sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
             Innovative technology to revolutionize industry standards,
             Available for pre-order now and shipping to customers in the coming months
           </p>
           <div class="mt-5 sm:flex md:mt-12">
             <a href=""
-               class="rounded-md bg-white/10 px-8 py-3 text-base font-medium text-gray-100 shadow-lg backdrop-blur-lg hover:bg-white/30 md:py-4 md:px-10 md:text-lg">
+               class="rounded-md bg-white/10 px-8 py-3 text-base font-medium text-white shadow-lg backdrop-blur-lg hover:bg-white/30 md:py-4 md:px-10 md:text-lg">
               Hubungi Kami
             </a>
           </div>
@@ -92,7 +92,7 @@
           const sentinel = document.querySelector('#end-of-hero');
           const io = new IntersectionObserver(([e]) => {
             this.atTop = !e.isIntersecting; // atTop true when hero is left behind
-          }, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
+          }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' });
           if (sentinel) io.observe(sentinel);
           this.lastY = window.pageYOffset || 0;
         },
