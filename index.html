@@ -3,26 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- <link href="./assets/css/output.css" rel="stylesheet"> -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <link href="./assets/css/output.css" rel="stylesheet">
   <title>Integrise</title>
 </head>
 
-<body x-data="{ atTop: false }" x-init="
-  const sentinel = document.querySelector('#end-of-hero');
-  const io = new IntersectionObserver(([e]) => {
-    // e.isIntersecting === true  -> masih di Section 1  => atTop=false
-    // e.isIntersecting === false -> sudah melewati S1   => atTop=true
-    atTop = !e.isIntersecting;
-  }, { threshold: 0 });
-
-  if (sentinel) io.observe(sentinel);
-">
-  <nav class="fixed top-0 left-0 right-0 z-[10000] transition duration-500 ease-in-out font-inter"
-       :class="{
+<body>
+  <nav
+      x-data="nav()" x-init="init()" @scroll.window.passive="onScroll"
+        class="fixed top-0 left-0 right-0 z-[10000] transition duration-500 ease-in-out font-inter"
+        :class="{
          'shadow-lg bg-white text-indigo-800': atTop,
-         'bg-transparent text-white': !atTop
+         'bg-transparent text-white': !atTop,
+         'transition -translate-y-20': !open
        }">
     <div class="container mx-auto p-4 flex flex-wrap items-center justify-between font-semibold">
       <!-- Logo -->
@@ -46,9 +42,10 @@
 
   <main>
     <!-- Section 1 (Hero) -->
-    <section class="h-screen bg-[url('/assets/img/background.jpg')] bg-cover bg-fixed bg-no-repeat text-white text-xl">
+    <section class="h-screen hero-bg bg-cover bg-fixed bg-no-repeat text-white text-xl">
       <div class="h-full container flex items-center mx-auto">
         <div class="px-4 mt-16 mb-16 max-w-7xl sm:mt-24">
+          <div id="end-of-hero" class="h-px w-full"></div>
           <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-title">
             <span class="block">Ini Judul</span>
             <span class="block pt-2">Gatau apa ini gaes</span>
@@ -66,28 +63,51 @@
         </div>
       </div>
 
-      <!-- 👇 Sentinel di UJUNG Section 1 -->
-      <div id="end-of-hero" class="h-px w-full"></div>
+      <!-- Sentinel -->
     </section>
 
     <!-- Section 2 (mulai atTop=true dan seterusnya) -->
     <section id="section-2" class="h-screen bg-white text-gray-800 flex items-center justify-center">
-      <div class="max-w-2xl border text-center space-y-4">
-        <h2 class="text-3xl font-bold">Section Kedua 🚀</h2>
-        <p class="text-lg text-gray-600">Mulai sini navbar putih & tetap begitu sampai akhir.</p>
+      <div class="max-w-2xl text-center space-y-4">
+        <h2 class="text-3xl font-bold">New Section</h2>
       </div>
     </section>
 
     <section class="h-screen bg-gray-100 flex items-center justify-center">
-      <p>Section Ketiga 😎</p>
+      <h2 class="text-3xl font-bold">New Section</h2>
     </section>
 
-    <div class="border p-6 space-y-4">
-      <p>Lorem ipsum dolor sit amet...</p>
-      <p>Lorem ipsum dolor sit amet...</p>
-      <p>Lorem ipsum dolor sit amet...</p>
-      <p>Lorem ipsum dolor sit amet...</p>
-    </div>
   </main>
+
+  <script>
+    function nav() {
+      return {
+        open: true,
+        atTop: true,
+        lastY: 0,
+        upTol: 8,
+        downTol: 90,
+        init() {
+          // IntersectionObserver with early trigger using rootMargin
+          const sentinel = document.querySelector('#end-of-hero');
+          const io = new IntersectionObserver(([e]) => {
+            this.atTop = !e.isIntersecting; // atTop true when hero is left behind
+          }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' });
+          if (sentinel) io.observe(sentinel);
+          this.lastY = window.pageYOffset || 0;
+        },
+        onScroll() {
+          const y = Math.max(0, window.pageYOffset || 0);
+          // hide after sufficient downward scroll; show quickly when scrolling up
+          if (y > this.lastY && y - this.lastY > this.downTol) {
+            this.open = false;
+          } else if (y < this.lastY - this.upTol) {
+            this.open = true;
+          }
+          this.lastY = y;
+        }
+      }
+    }
+  </script>
 </body>
 </html>

@@ -1,120 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="./assets/css/output.css" rel="stylesheet">
-    <title>Integrise</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrise — GSAP + Tailwind + Alpine Demo</title>
+  <!-- Tailwind CDN (standalone for quick demo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <style>
+    /* Smooth hide/show for navbar translate */
+    .nav-slide { transition: transform 400ms ease, background-color 300ms ease, box-shadow 300ms ease, color 300ms ease; }
+    /* Prevent layout jump when navbar hides */
+    .nav-spacer { height: 72px; }
+    /* Simple parallax helper (background) */
+    .parallax-hero { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 40%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.06), transparent 40%), linear-gradient(180deg, #0f172a 0%, #111827 100%); }
+  </style>
 </head>
-<body>
-    <div x-data="{ atTop: false }" class="w-screen h-screen bg-red-400">
-        <nav class="sticky top-0 left-0 right-0 transition duration-500 ease-in-out font-inter"
-            :class="{ 'shadow-lg': atTop, 'bg-transparent text-white': !atTop, 'bg-white text-indigo-800': atTop }"
-            @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
-            <div class="flex flex-wrap font-semibold items-center justify-between mx-auto p-4">
-                <!-- Logo Start -->
-                <div class="">
-                    <a href="#">
-                        <img src="./assets/img/integriseHt.svg" alt="Integrise" class="h-8">
-                    </a>
-                </div>
-                <!-- Logo End -->
-    
-                <!-- Nav Start -->
-                <div class="flex flex-wrap gap-6">
-                    <a href="">
-                        Home
-                    </a>
-                    <a href="">
-                        Tentang
-                    </a>
-                    <a href="">
-                        Produk
-                    </a>
-                    <a href="">
-                        Layanan
-                    </a>
-                </div>
-                <!-- Nav End -->
-    
-                <!-- Hubungi Start-->
-                <div>
-                    <a href="">
-                        Hubungi Kami
-                    </a>
-                </div>
-                <!-- Hubungi End -->
-            </div>
-        </nav>
-        <div class=""></div>
+<body class="bg-slate-900 text-slate-100 antialiased">
+  <!-- ================= NAV ================= -->
+  <nav x-data="nav()" x-init="init()" @scroll.window.passive="onScroll" class="fixed top-0 inset-x-0 z-[1000] nav-slide" :class="{ '-translate-y-20': !open, 'shadow-lg bg-white/80 backdrop-blur text-slate-900': atTop, 'bg-transparent text-white': !atTop }">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="font-bold tracking-tight text-lg">Integrise</a>
+      <div class="flex items-center gap-4">
+        <a href="#features" class="hover:opacity-80">Features</a>
+        <a href="#showcase" class="hover:opacity-80">Showcase</a>
+        <a href="#contact" class="hover:opacity-80">Contact</a>
+      </div>
     </div>
-    <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+  </nav>
+  <div class="nav-spacer"></div>
 
+  <!-- ================= HERO ================= -->
+  <header id="hero" class="parallax-hero relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 py-28 md:py-36">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 translate-y-6" id="heroTitle">Build Faster. Ship Smarter.</h1>
+          <p class="mt-4 text-slate-300 text-lg opacity-0 translate-y-6" id="heroSub">Tailwind for styling, Alpine for state, GSAP for motion — clean stack, enterprise-ready vibes.</p>
+          <div class="mt-8 flex gap-4 opacity-0 translate-y-6" id="heroCtas">
+            <a href="#features" class="px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold">Explore</a>
+            <a href="#contact" class="px-5 py-3 rounded-xl border border-slate-600 hover:border-slate-400">Contact Sales</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-800/50 to-slate-700/30 shadow-2xl overflow-hidden opacity-0 scale-95" id="heroCard">
+            <div class="h-full w-full grid place-items-center">
+              <svg viewBox="0 0 200 200" class="w-3/4 h-3/4 opacity-80">
+                <defs>
+                  <linearGradient id="g" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#60A5FA"/>
+                    <stop offset="100%" stop-color="#A78BFA"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="url(#g)" stroke-width="6" />
+                <path d="M50 120 L100 60 L150 120" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- Sentinel for top detection -->
+    <div id="end-of-hero" class="h-1 w-full"></div>
+  </header>
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features" class="py-24 bg-slate-950/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10">Differentiators</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 6 cards -->
+        <template id="feature-template">
+          <div class="feature-card p-6 rounded-2xl border border-slate-800 bg-slate-800/30 opacity-0 translate-y-8">
+            <h3 class="text-xl font-semibold mb-2">Composable Stack</h3>
+            <p class="text-slate-300">Alpine for orchestrating state, GSAP for motion, Tailwind for atomic styling. No bloat.</p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SHOWCASE (pin + scrub) ================= -->
+  <section id="showcase" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Motion Showcase</h2>
+      <div class="relative rounded-2xl overflow-hidden border border-slate-800">
+        <div class="h-[60vh] md:h-[70vh] bg-gradient-to-br from-indigo-950/40 to-fuchsia-900/20 grid place-items-center" id="pinWrap">
+          <div class="text-center">
+            <p class="text-sm uppercase tracking-wider text-slate-400">Scroll to drive timeline</p>
+            <h3 class="text-4xl md:text-5xl font-extrabold mt-2">ScrollTrigger Pinned Timeline</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="py-24 bg-slate-950/30">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold">Let’s Talk</h2>
+      <p class="mt-3 text-slate-300">Have a product brief? We’ll pressure-test scope, then ship a lean MVP that actually converts.</p>
+      <form class="mt-8 grid gap-4 sm:grid-cols-2 text-left">
+        <input type="text" placeholder="Name" class="px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input type="email" placeholder="Email" class="px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <textarea placeholder="Your message" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 h-32 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+        <button type="button" class="sm:col-span-2 px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 font-semibold">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="py-12 text-center text-slate-400 text-sm">© 2025 Integrise. All rights reserved.</footer>
+
+  <!-- ================= ALPINE + GSAP SCRIPTS ================= -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Alpine component for navbar behavior (hide on scroll down with buffer; show on scroll up quickly)
+    function nav() {
+      return {
+        open: true,
+        atTop: true,
+        lastY: 0,
+        upTol: 8,
+        downTol: 90,
+        init() {
+          // IntersectionObserver with early trigger using rootMargin
+          const sentinel = document.querySelector('#end-of-hero');
+          const io = new IntersectionObserver(([e]) => {
+            this.atTop = !e.isIntersecting; // atTop true when hero is left behind
+          }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' });
+          if (sentinel) io.observe(sentinel);
+          this.lastY = window.pageYOffset || 0;
+        },
+        onScroll() {
+          const y = Math.max(0, window.pageYOffset || 0);
+          // hide after sufficient downward scroll; show quickly when scrolling up
+          if (y > this.lastY && y - this.lastY > this.downTol) {
+            this.open = false;
+          } else if (y < this.lastY - this.upTol) {
+            this.open = true;
+          }
+          this.lastY = y;
+        }
+      }
+    }
+
+    // ===== HERO entrance timeline
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+    heroTl
+      .to('#heroTitle', { opacity: 1, y: 0 })
+      .to('#heroSub', { opacity: 1, y: 0 }, '-=0.6')
+      .to('#heroCtas', { opacity: 1, y: 0 }, '-=0.6')
+      .to('#heroCard', { opacity: 1, scale: 1, duration: 0.9 }, '-=0.5');
+
+    // ===== Parallax effect for hero background svg/card (subtle)
+    gsap.to('#heroCard', {
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.3,
+      }
+    });
+
+    // ===== Build features dynamically and animate on reveal
+    (function buildFeatures(){
+      const grid = document.querySelector('#features .grid');
+      const tpl = document.getElementById('feature-template');
+      const items = [
+        ['Composable Stack','Alpine orchestrates, GSAP animates, Tailwind styles. Lean & mean.'],
+        ['Scroll Intelligence','IntersectionObserver + ScrollTrigger for buttery UX.'],
+        ['Design Tokens','Utilities-first theming that scales across properties.'],
+        ['Zero Jank','Passive listeners, tolerance buffers, and pinned timelines.'],
+        ['DX Optimized','Single-file demo, but production-ready patterns.'],
+        ['Enterprise Ready','Deterministic motion, accessible defaults, clean code.'],
+      ];
+      items.forEach(([title, desc]) => {
+        const card = tpl.content.firstElementChild.cloneNode(true);
+        card.querySelector('h3').textContent = title;
+        card.querySelector('p').textContent = desc;
+        grid.appendChild(card);
+      });
+
+      gsap.utils.toArray('.feature-card').forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: i * 0.06,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        })
+      })
+    })();
+
+    // ===== Showcase: pin and scrub timeline
+    const pinTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#pinWrap',
+        start: 'top 15%',
+        end: '+=1200',
+        scrub: 0.5,
+        pin: true,
+      }
+    });
+    pinTl
+      .from('#pinWrap .text-center p', { opacity: 0, y: 20, duration: 0.6 })
+      .from('#pinWrap .text-center h3', { opacity: 0, y: 40, duration: 0.8 }, '-=0.3')
+      .to('#pinWrap', { backgroundPosition: '50% 70%', duration: 1 }, '-=0.2')
+      .to('#pinWrap .text-center', { scale: 1.05, duration: 0.8 })
+      .to('#pinWrap .text-center', { scale: 1.0, duration: 0.8 });
+
+    // ===== Minor: reveal contact section
+    gsap.from('#contact h2', {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      scrollTrigger: { trigger: '#contact', start: 'top 80%' }
+    });
+    gsap.from('#contact p', {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      delay: 0.1,
+      scrollTrigger: { trigger: '#contact', start: 'top 80%' }
+    });
+    gsap.from('#contact form', {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      delay: 0.2,
+      scrollTrigger: { trigger: '#contact', start: 'top 80%' }
+    });
+  </script>
 </body>
 </html>
