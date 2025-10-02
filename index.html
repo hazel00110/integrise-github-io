@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="./assets/css/output.css" rel="stylesheet">
+  <title>Integrise</title>
+</head>
+
+<body x-data="{ atTop: false }" x-init="
+  const sentinel = document.querySelector('#end-of-hero');
+  const io = new IntersectionObserver(([e]) => {
+    // e.isIntersecting === true  -> masih di Section 1  => atTop=false
+    // e.isIntersecting === false -> sudah melewati S1   => atTop=true
+    atTop = !e.isIntersecting;
+  }, { threshold: 0 });
+
+  if (sentinel) io.observe(sentinel);
+">
+  <nav class="fixed top-0 left-0 right-0 z-[10000] transition duration-500 ease-in-out font-inter"
+       :class="{
+         'shadow-lg bg-white text-indigo-800': atTop,
+         'bg-transparent text-white': !atTop
+       }">
+    <div class="container mx-auto p-4 flex flex-wrap items-center justify-between font-semibold">
+      <!-- Logo -->
+      <a href="#">
+        <img :src="atTop ? './assets/img/integriseHt.svg' : './assets/img/integrisePt.svg'"
+             alt="Integrise" class="h-8 w-auto">
+      </a>
+
+      <div class="flex flex-wrap gap-6">
+        <a href="/">Home</a>
+        <a href="">Tentang</a>
+        <a href="">Produk</a>
+        <a href="">Layanan</a>
+      </div>
+
+      <div>
+        <a href="">Hubungi Kami</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Section 1 (Hero) -->
+    <section class="h-screen bg-[url('/assets/img/background.jpg')] bg-cover bg-fixed bg-no-repeat text-white text-xl">
+      <div class="h-full container flex items-center mx-auto">
+        <div class="px-4 mt-16 mb-16 max-w-7xl sm:mt-24">
+          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-title">
+            <span class="block">Ini Judul</span>
+            <span class="block pt-2">Gatau apa ini gaes</span>
+          </h1>
+          <p class="max-w-md mt-3 font-bold sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            Innovative technology to revolutionize industry standards,
+            Available for pre-order now and shipping to customers in the coming months
+          </p>
+          <div class="mt-5 sm:flex md:mt-12">
+            <a href=""
+               class="rounded-md bg-white/10 px-8 py-3 text-base font-medium text-white shadow-lg backdrop-blur-lg hover:bg-white/30 md:py-4 md:px-10 md:text-lg">
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 👇 Sentinel di UJUNG Section 1 -->
+      <div id="end-of-hero" class="h-px w-full"></div>
+    </section>
+
+    <!-- Section 2 (mulai atTop=true dan seterusnya) -->
+    <section id="section-2" class="h-screen bg-white text-gray-800 flex items-center justify-center">
+      <div class="max-w-2xl border text-center space-y-4">
+        <h2 class="text-3xl font-bold">Section Kedua 🚀</h2>
+        <p class="text-lg text-gray-600">Mulai sini navbar putih & tetap begitu sampai akhir.</p>
+      </div>
+    </section>
+
+    <section class="h-screen bg-gray-100 flex items-center justify-center">
+      <p>Section Ketiga 😎</p>
+    </section>
+
+    <div class="border p-6 space-y-4">
+      <p>Lorem ipsum dolor sit amet...</p>
+      <p>Lorem ipsum dolor sit amet...</p>
+      <p>Lorem ipsum dolor sit amet...</p>
+      <p>Lorem ipsum dolor sit amet...</p>
+    </div>
+  </main>
+</body>
+</html>

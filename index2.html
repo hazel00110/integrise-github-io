@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="./assets/css/output.css" rel="stylesheet">
+    <title>Integrise</title>
+</head>
+<body>
+    <div x-data="{ atTop: false }" class="w-screen h-screen bg-red-400">
+        <nav class="sticky top-0 left-0 right-0 transition duration-500 ease-in-out font-inter"
+            :class="{ 'shadow-lg': atTop, 'bg-transparent text-white': !atTop, 'bg-white text-indigo-800': atTop }"
+            @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
+            <div class="flex flex-wrap font-semibold items-center justify-between mx-auto p-4">
+                <!-- Logo Start -->
+                <div class="">
+                    <a href="#">
+                        <img src="./assets/img/integriseHt.svg" alt="Integrise" class="h-8">
+                    </a>
+                </div>
+                <!-- Logo End -->
+    
+                <!-- Nav Start -->
+                <div class="flex flex-wrap gap-6">
+                    <a href="">
+                        Home
+                    </a>
+                    <a href="">
+                        Tentang
+                    </a>
+                    <a href="">
+                        Produk
+                    </a>
+                    <a href="">
+                        Layanan
+                    </a>
+                </div>
+                <!-- Nav End -->
+    
+                <!-- Hubungi Start-->
+                <div>
+                    <a href="">
+                        Hubungi Kami
+                    </a>
+                </div>
+                <!-- Hubungi End -->
+            </div>
+        </nav>
+        <div class=""></div>
+    </div>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae recusandae laborum, labore quod doloremque fuga. Quibusdam perspiciatis temporibus vitae exercitationem? Voluptatibus officiis, quae qui quaerat veritatis consectetur deserunt accusantium adipisci!</p>
+
+    </div>
+</body>
+</html>
